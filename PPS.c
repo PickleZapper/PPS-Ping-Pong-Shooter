@@ -3,6 +3,8 @@
 #pragma config(Sensor, dgtl3,  firingSwitch,   sensorTouch)
 #pragma config(Motor,  port2,           elevationMotor, tmotorVex269_MC29, openLoop)
 #pragma config(Motor,  port3,           firingMotor,   tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port4,           ballPusher,   tmotorServoStandard, openLoop)
+
 
 /*
 revisions:
@@ -17,6 +19,7 @@ task main()
 {
 	while(true)
 	{
+		setServo(ballPusher,-127);
 		int angle = SensorValue(firingAngle);
 		while(abs(SensorValue(firingAngle)-SensorValue(firingAngleInput)/4) > 20){
 
@@ -37,10 +40,10 @@ task main()
 
 		while(SensorValue(firingSwitch) == 1){
 			startMotor(firingMotor, 127);
+			wait(3);
+			setServo(ballPusher,127);
+			stopMotor(firingMotor);
 		}
-
-		stopMotor(firingMotor);
-
 	}
 }
 
