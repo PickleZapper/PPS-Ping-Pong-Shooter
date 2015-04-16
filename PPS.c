@@ -41,7 +41,8 @@ task main()
 		while(SensorValue(firingSwitch) == 1){
 			startMotor(firingMotor, 127);
 			wait(3);
-			setServo(ballPusher,127);
+			setServo(ballPusher, 127);
+			wait(0.5);
 			stopMotor(firingMotor);
 		}
 	}
