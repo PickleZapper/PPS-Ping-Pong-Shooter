@@ -1,4 +1,4 @@
-# Ping-Pong-Shooter-PPS
+# PPS-Ping-Pong-Shooter
 RobotC Code to operate a VEX ping pong ball shooter
 
 
