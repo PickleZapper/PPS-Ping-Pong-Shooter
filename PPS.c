@@ -20,7 +20,6 @@ task main()
 	while(true)
 	{
 		setServo(ballPusher,-127);
-		int angle = SensorValue(firingAngle);
 		while(abs(SensorValue(firingAngle)-SensorValue(firingAngleInput)/4) > 20){
 
 			int angleInput = SensorValue(firingAngleInput)/4;
@@ -28,10 +27,10 @@ task main()
 				startMotor(elevationMotor, 127);
 				
 			if(SensorValue(firingAngle) < angleInput)
-				startMotor(elevationMotor, 20);
+				startMotor(elevationMotor, 25);
 				
 			if(SensorValue(firingAngle) > angleInput + 50)
-				startMotor(elevationMotor, -100);
+				startMotor(elevationMotor, -80);
 
 			if(SensorValue(firingAngle) > angleInput)
 				startMotor(elevationMotor, -15);
@@ -40,7 +39,7 @@ task main()
 
 		while(SensorValue(firingSwitch) == 1){
 			startMotor(firingMotor, 127);
-			wait(3);
+			wait(2);
 			setServo(ballPusher, 127);
 			wait(0.5);
 			stopMotor(firingMotor);
